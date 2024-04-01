@@ -1,54 +1,91 @@
-# Experiment--03-Half-Subtractor-and-Full-subtractor
-## Implementation-of-Half-subtractor-and-Full-subtractor-circuit
-## AIM:
-To design a half subtractor and full subtractor circuit and verify its truth table in Quartus using Verilog programming.
+# HALF_ADDER_SUBTRACTOR
 
-## Equipments Required:
-## Hardware – PCs, Cyclone II , USB flasher
-## Software – Quartus prime
-## Theory
-Subtractor circuits take two binary numbers as input and subtract one binary number input from the other binary number input. Similar to adders, it gives out two outputs, difference and borrow (carry-in the case of Adder). There are two types of subtractors.
+Implementation-of-Half-Adder-and-Half Subtractor-circuit
 
-## Half Subtractor Full Subtractor
-## Half Subtractor
-The half-subtractor is a combinational circuit which is used to perform subtraction of two bits. It has two inputs, X (minuend) and Y (subtrahend) and two outputs D (difference) and B (borrow). To perform x - y, we have to check the relative magnitudes of x and y. If x ;;, y, we have three possibilities: 0 - 0 = 0, 1 - 0 = 1, and 1 - I = 0. The result is called the difference bit. If x < y, we have 0 - I, and it is necessary to borrow a 1 from the next higher stage. The I borrowed from the next higher stage adds 2 to the minuend bit, just as in the decimal system a borrow adds 10 to a minuend digit. With the minuend equal to 2, the difference becomes 2 - I = 1. The half-subtractor needs two outputs. One output generates the difference and will be designated by the symbol D. The second output, designated B for borrow, generates the binary signal that informs the next stage that a I has been borrowed.
-![half-subtractor9](https://user-images.githubusercontent.com/36288975/166112538-58c3bc7c-ee5d-4e6a-ac8d-8e8328efe27a.png)
+**AIM:**
 
+To design a half adder and half subtractor circuit and verify its truth table in Quartus using Verilog programming.
 
-Sum = X'Y+XY' = X ⊕ Y
-Carry=X'Y
+**Equipments Required:**
 
-## Full Subtractor
-A full subtractor is a combinational circuit that performs subtraction involving three bits, namely minuend, subtrahend, and borrow-in . It accepts three inputs: minuend, subtrahend and a borrow bit and it produces two outputs: difference and borrow. 
-![full-subtractor6](https://user-images.githubusercontent.com/36288975/166112541-24c68359-3de8-4674-ae22-8272ffc385ed.png)
+Hardware – PCs, Cyclone II , USB flasher 
 
+Software – Quartus prime Theory Adders are digital circuits that carry out the addition of numbers.
 
-Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + BBin
+**Half Adder**
 
-## Procedure
+Half adder is a combinational circuit that performs simple addition of two binary numbers. The input variables designate the augend and addend bits; the output variables produce the sum and carry. It is necessary to specify two output variables because the result may consist of two binary digits.
 
+Sum = A’B+AB’ =A ⊕ B Carry = AB
 
+![image](https://github.com/naavaneetha/HALF_ADDER_SUBTRACTOR/assets/154305477/bd4a0b2c-cdbc-4184-ab08-81578f121e1f)
 
-Write the detailed procedure here 
+Figure -01 HALF ADDER
 
+**Half Subtractor**
 
-## Program:
-/*
-Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+The half-subtractor is a combinational circuit which is used to perform subtraction of two bits. It has two inputs, X (minuend) and Y (subtrahend) and two outputs D (difference) and B (borrow). To perform x - y, we have to check the relative magnitudes of x and y. If x ;;, y, we have three possibilities: 0 - 0 = 0, 1 - 0 = 1, and 1 - I = 0. The result is called the difference bit. If x < y, we have 0 - I, and it is necessary to borrow a 1 from the next higher stage. The I borrowed from the next higher stage adds 2 to the minuend bit, just as in the decimal system a borrow adds 10 to a minuend digit. With the minuend equal to 2, the difference becomes 2 - I = 1. The half-subtractor needs two outputs. One output generates the difference and will be designated by the symbol D. The second output, designated B for borrow, generates the binary signal that informs the next stage that a I has been borrowed. 
 
-## Output:
+Diff = A’B+AB’ =A ⊕ B
+Borrow = A’B
 
-## Truthtable
+ ![image](https://github.com/naavaneetha/HALF_ADDER_SUBTRACTOR/assets/154305477/d76b099c-513f-4e7c-843a-e2fd028a531a)
 
 
+**Truthtable**
 
-##  RTL realization
+**Half adder**
+![image](https://github.com/MageshCM/Experiment--03-Half-Subtractor-and-Full-subtractor/assets/164765537/c711b062-d715-478c-8ecc-e8ff1251c511)
 
 
-## Timing diagram 
+**Half subtractor**
+![image](https://github.com/MageshCM/Experiment--03-Half-Subtractor-and-Full-subtractor/assets/164765537/34e5be38-e942-4404-8e02-73a3979fe941)
 
-## Result:
-Thus the half subtractor and full subtractor circuits are designed and the truth tables is verified using quartus software.
+
+**Procedure**
+
+1.	Type the program in Quartus software.
+
+2.	Compile and run the program.
+
+3.	Generate the RTL schematic and save the logic diagram.
+
+4.	Create nodes for inputs and outputs to generate the timing diagram.
+
+5.	For different input combinations generate the timing diagram.
+
+
+**Program:**
+
+ Program to design a half adder and full adder circuit and verify its truth table in quartus using Verilog programming.
+```
+Developed by:C M Magesh
+Reg no:212223220053
+
+module HALF_ADDSUB(a,b,sum,carry,D,Bo);
+input a,b;
+output sum,carry,D,Bo;
+//HALF ADDER
+xor(sum,a,b);
+and(carry,a,b);
+
+
+//HALF SUBTRACTOR
+wire abar;
+not(abar,a);
+xor(D,a,b);
+and(Bo,abar,b);
+endmodule
+```
+
+**RTL Schematic**
+![alt text](<Screenshot 2024-03-19 080053.png>)
+**Output/TIMING Waveform**
+##Half adder
+![new1](https://github.com/TEJA19092005/HALF_ADDER_SUBTRACTOR/assets/164043042/bef81b8c-f614-4d7e-abc0-213d8d344ee9)
+
+##half sub
+![new2](https://github.com/TEJA19092005/HALF_ADDER_SUBTRACTOR/assets/164043042/a6b1d4ad-b218-4a61-82d4-3fdbc5275edd)
+
+**Result:**
+Thus Implementation-of-Half-Adder-and-Half Subtractor-circuit is running successfully
